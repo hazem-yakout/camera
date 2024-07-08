@@ -1,0 +1,20 @@
+from tkinter import *
+import cv2
+prog = Tk()
+prog.title("camera app by hazem yakout")
+prog.geometry("350x450+400+100")
+title = Label(prog, text= "برنامج سيلفي", fg="red", bg="black")
+title.pack(fill=X)
+def cam():
+    cam = cv2.VideoCapture(0)
+    ret,image =cam.read()
+    cv2.imwrite("D:\pictures.png", image)
+    del(cam)
+photo = PhotoImage(file="D:\\images.png")
+imo = Label(prog, image=photo)
+imo.place(x=10,y=40, width = 337, height=272)
+btn1 = Button(prog, text="Take photo", bg="black", fg="red", width=20, height=2, command=cam)
+btn1.place(x=100,y=340)
+btn2 = Button(prog, text="close program", bg="black", fg="red", width=20, height=2, command=prog.quit)
+btn2.place(x=100,y=390)
+prog.mainloop()
